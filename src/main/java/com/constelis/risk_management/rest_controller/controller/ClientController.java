@@ -1,6 +1,7 @@
 package com.constelis.risk_management.rest_controller.controller;
 
 import com.constelis.risk_management.entities.Client;
+import com.constelis.risk_management.entities.Note;
 import com.constelis.risk_management.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,12 @@ public class ClientController {
     public Client save(@RequestBody Client client){
         logger.info("Restcontroller - saving client: " + client);
         return clientService.create(client);
+    }
+
+    @RequestMapping(value = "/client/note/{id}", method = RequestMethod.POST)
+    public Client addNote(@PathVariable String id, @RequestBody Note note){
+        logger.info("Restcontroller - adding note for client with id: " + id);
+        return clientService.addNote(id, note);
     }
 
     @RequestMapping(value = "/client/{id}", method = RequestMethod.GET)

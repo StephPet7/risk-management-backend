@@ -112,4 +112,16 @@ public class ClientServiceImpl implements ClientService {
             return "";
         }
     }
+
+    @Override
+    public Client addNote(String id, Note note) {
+        logger.info("retrieving client with id:" + id);
+        Client client_temp = this.find(id);
+
+        logger.info("Adding the new note");
+        client_temp.addNote(note);
+
+        logger.info("update the client");
+        return this.clientRepository.save(client_temp);
+    }
 }

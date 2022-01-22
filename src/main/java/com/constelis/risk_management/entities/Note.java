@@ -1,8 +1,6 @@
 package com.constelis.risk_management.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -33,5 +31,9 @@ public class Note {
         this.offer = offer;
         this.creation_date = created;
         this.offer_date = offer_date;
+    }
+
+    public String getNote() {
+        return this.note;
     }
 }

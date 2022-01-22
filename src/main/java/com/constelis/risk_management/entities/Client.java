@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Data
@@ -56,5 +57,18 @@ public class Client {
         this.town = town;
         this.linkedIn_link = linkedIn_link;
         this.notation = notation;
+    }
+
+    public void addNote(Note note) {
+        boolean exists = false;
+        Iterator<Note> i = this.notes.iterator();
+        while (i.hasNext()) {
+            if(i.next().getNote().equals(note.getNote())) {
+                exists = true;
+            }
+        }
+        if(!exists) {
+            this.notes.add(note);
+        }
     }
 }
